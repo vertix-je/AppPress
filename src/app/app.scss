@@ -14,3 +14,32 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+
+ion-menu {
+	button ion-label ion-icon {
+		padding-right: 12px;
+	}
+
+	.sign-in {
+		margin-left: 16px;
+		margin-top: 16px;
+	}
+
+	.fa-button {
+		line-height: 5.0rem;
+		font-size: 2.2rem;
+		height: 5.0rem;
+		padding: 0;
+		width: 5.0rem;
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	ion-footer ion-grid ion-col {
+		text-align: center;
+		padding: 0 !important;
+	}
+}

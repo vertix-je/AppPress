@@ -1,18 +1,67 @@
 <ion-menu [content]="content" type="overlay">
   <ion-header>
     <ion-toolbar>
-      <ion-title>Menu</ion-title>
+      <ion-title>AppPress</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-content>
+  <ion-content text-center>
     <ion-list>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        <ion-icon name="{{p.icon}}"></ion-icon>
         {{p.title}}
       </button>
+      <button menuClose ion-button round class="sign-in">Sign In</button>
     </ion-list>
   </ion-content>
 
+  <ion-footer>
+
+    <ion-item>
+      <ion-input item-content type="email" placeholder="Join Our Newsletter"></ion-input>
+      <button item-right ion-button round>Join</button>
+    </ion-item>
+
+    <button menuClose ion-item (click)="openTerms()">
+      Terms & Conditions
+    </button>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <a href="https://www.twitter.com" target="_blank">
+            <button ion-button round color="light" class="fa fa-twitter fa-button">
+            </button>
+          </a>
+        </ion-col>
+        <ion-col>
+          <a href="https://www.facebook.com" target="_blank">
+            <button ion-button round color="light" class="fa fa-facebook fa-button">
+            </button>
+          </a>
+        </ion-col>
+        <ion-col>
+          <a href="https://www.instagram.com/?hl=en" target="_blank">
+            <button ion-button round color="light" class="fa fa-instagram fa-button">
+            </button>
+          </a>
+        </ion-col>
+        <ion-col>
+          <a href="tel:+447797762047" target="_blank">
+            <button ion-button round color="light" class="fa fa-phone fa-button">
+            </button>
+          </a>
+        </ion-col>
+        <ion-col>
+          <a href="mailto:info@vertix.je?subject=AppPress" target="_blank">
+            <button ion-button round color="light" class="fa fa-envelope fa-button">
+            </button>
+          </a>
+        </ion-col>
+      </ion-row>      
+    </ion-grid>
+
+  </ion-footer>
 </ion-menu>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->

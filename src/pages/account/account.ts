@@ -5,10 +5,10 @@ import { PostDetail } from '../post-detail/post-detail';
 import 'rxjs/add/operator/map';
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-account',
+  templateUrl: 'account.html'
 })
-export class HomePage {
+export class AccountPage {
 	url: string = 'http://app.filmstarr.co.uk/wp-json/wp/v2/posts';
 	items: any;
 

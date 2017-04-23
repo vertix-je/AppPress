@@ -4,8 +4,11 @@ import { HttpModule } from '@angular/http';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { BlogPage } from '../pages/blog/blog';
+import { InfoPage } from '../pages/info/info';
+import { ShopPage } from '../pages/shop/shop';
+import { AccountPage } from '../pages/account/account';
+import { TermsPage } from '../pages/terms/terms';
 import { PostDetail } from '../pages/post-detail/post-detail';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -14,8 +17,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    ListPage,
+    BlogPage,
+    InfoPage,
+    ShopPage,
+    AccountPage,
+    TermsPage,
     PostDetail
   ],
   imports: [
@@ -26,8 +32,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    ListPage,
+    BlogPage,
+    InfoPage,
+    ShopPage,
+    AccountPage,
+    TermsPage,
     PostDetail
   ],
   providers: [

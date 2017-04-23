@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Info</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+ <div *ngIf="selectedItem" class="selection">
+    <div [innerHTML]="selectedItem.content.rendered"></div>
+ </div>
+</ion-content>
