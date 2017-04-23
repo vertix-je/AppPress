@@ -9,6 +9,8 @@ import { ShopPage } from '../pages/shop/shop';
 import { AccountPage } from '../pages/account/account';
 import { TermsPage } from '../pages/terms/terms';
 
+import { DataProvider } from '../services/data-provider.service';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -19,8 +21,13 @@ export class MyApp {
 
   pages: Array<{title: string, component: any, icon: string}>;
   
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private dataProvider: DataProvider) {
     this.initializeApp();
+
+    //Fire off some initial requests so that we pre-cache our data
+    this.dataProvider.getData('http://app.filmstarr.co.uk/wp-json/wp/v2/posts');
+    this.dataProvider.getData('http://app.filmstarr.co.uk/wp-json/wp/v2/pages/25');
+    this.dataProvider.getData('http://app.filmstarr.co.uk/wp-json/wp/v2/pages/16');
 
     // used for an example of ngFor and navigation
     this.pages = [

@@ -11,6 +11,8 @@ import { AccountPage } from '../pages/account/account';
 import { TermsPage } from '../pages/terms/terms';
 import { PostDetail } from '../pages/post-detail/post-detail';
 
+import { DataProvider } from '../services/data-provider.service';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -27,7 +29,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -42,6 +44,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
+    DataProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
