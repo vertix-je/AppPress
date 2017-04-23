@@ -10,8 +10,6 @@ export class DataProvider {
     this.data = [];
   }
 
-  private dataObs$ = new ReplaySubject(1);
-
   getData(url: string, forceRefresh?: boolean) {
     var requestData = this.data.find(myObj => myObj.url == url);
     var observable;
