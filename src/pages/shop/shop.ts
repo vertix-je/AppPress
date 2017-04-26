@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+
+declare var WooCommerceAPI: any;
 
 @Component({
   selector: 'page-shop',
@@ -7,31 +9,27 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class ShopPage {
   selectedItem: any;
-  icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
+  products: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('item');
+  constructor(public navCtrl: NavController, public navParams: NavParams, public zone: NgZone) {
+    var WooCommerce = WooCommerceAPI.WooCommerceAPI({
+      url: 'http://app.filmstarr.co.uk',
+      consumerKey: 'ck_9adeb490b0d8853acb187fc07e69a84909fc7e66',
+      consumerSecret: 'cs_6ae60c344e399411e4954c0578a177fa8efe4fbb',
+      wpAPI: true,
+      version: 'wc/v1'
+    });
 
-    // Let's populate this page with some filler content for funzies
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
-
-    this.items = [];
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
+    WooCommerce.getAsync('products').then(result => {
+      this.products = JSON.parse(result.toJSON().body);
+      this.zone.run(() => {});
+    });
   }
 
-  itemTapped(event, item) {
+  itemTapped(event, product) {
     // That's right, we're pushing to ourselves!
     this.navCtrl.push(ShopPage, {
-      item: item
+      product: product
     });
   }
 }

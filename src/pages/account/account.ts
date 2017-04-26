@@ -13,7 +13,6 @@ export class AccountPage {
 	items: any;
 
   constructor(public navCtrl: NavController, private http: Http, private nav: NavController) {
-
   }
 	
 	ionViewDidEnter() {
