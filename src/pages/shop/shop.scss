@@ -1,3 +1,34 @@
 page-shop {
+	ion-card {
+		ion-card-title {
+	    white-space: nowrap;
+	    overflow-x: scroll;
+		}
 
+		ion-card-content {
+			padding-bottom: 0 !important;
+
+			.shop-item-description {
+		    height: 60px;
+		    overflow-y: hidden;
+		    position: relative;
+			}
+
+			.shop-item-description:after {
+			  content: "";
+			  position: absolute;
+			  z-index: 1;
+			  bottom: 0;
+			  left: 0;
+			  pointer-events: none;
+			  background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255, 1) 90%);
+			  width: 100%;
+			  height: 30px;
+			}
+		}
+
+		ion-col {
+			text-align: center
+		}
+	}
 }

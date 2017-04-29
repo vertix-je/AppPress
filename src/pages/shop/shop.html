@@ -4,17 +4,34 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Shop</ion-title>
+    <ion-buttons end>
+      <button ion-button end>
+        <ion-icon name="cart"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <button ion-item *ngFor="let item of products" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-left></ion-icon>
-      {{item.name}}
-      <div class="item-note" item-right>
-        £{{item.price}}
-      </div>
-    </button>
-  </ion-list>
+  <ion-row wrap>
+    <ion-col col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 *ngFor="let item of products">
+      <ion-card tappable (click)="itemTapped($event, item)">
+        <img src="{{item.images[0].src}}"/>
+        <ion-card-content>
+          <ion-card-title>
+            {{item.name}}
+          </ion-card-title>
+          <p class="shop-item-description" [innerHTML]="item.description"></p>
+        </ion-card-content>
+        <ion-row no-padding>
+          <ion-col>
+            <button ion-button clear small color="danger" icon-left>
+              <ion-icon name='cart'></ion-icon>
+              Add To Cart
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 </ion-content>

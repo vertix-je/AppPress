@@ -25,9 +25,10 @@ export class MyApp {
     this.initializeApp();
 
     //Fire off some initial requests so that we pre-cache our data
-    this.dataProvider.getData('http://app.filmstarr.co.uk/wp-json/wp/v2/posts');
-    this.dataProvider.getData('http://app.filmstarr.co.uk/wp-json/wp/v2/pages/25');
-    this.dataProvider.getData('http://app.filmstarr.co.uk/wp-json/wp/v2/pages/16');
+    this.dataProvider.getData('wp-json/wp/v2/posts');
+    this.dataProvider.getData('wp-json/wp/v2/pages/25');
+    this.dataProvider.getData('wp-json/wp/v2/pages/16');
+    this.dataProvider.getWooData('products');
 
     // used for an example of ngFor and navigation
     this.pages = [

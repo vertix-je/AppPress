@@ -10,10 +10,10 @@ import 'rxjs/add/operator/map';
   templateUrl: 'blog.html'
 })
 export class BlogPage {
-	url: string = 'http://app.filmstarr.co.uk/wp-json/wp/v2/posts';
+	url: string = 'wp-json/wp/v2/posts';
 	blogItems: any;
 
-  constructor(public navCtrl: NavController, private http: Http, private nav: NavController, private dataProvider: DataProvider) {
+  constructor(public navCtrl: NavController, private http: Http, private dataProvider: DataProvider) {
   }
 	
 	ionViewDidEnter() {
@@ -27,7 +27,7 @@ export class BlogPage {
 	}
 
 	itemTapped(event, item) {
-		this.nav.push(PostDetail, {
+		this.navCtrl.push(PostDetail, {
 		  item: item
 		});
 	}

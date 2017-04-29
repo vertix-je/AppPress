@@ -1,0 +1,36 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{selectedItem.name}}</ion-title>
+	  <ion-buttons end>
+	    <button ion-button end>
+	      <ion-icon name="cart"></ion-icon>
+	    </button>
+	  </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-row wrap>
+    <ion-col col-12 *ngIf="selectedItem">
+      <ion-card class="shop-item">
+        <img src="{{selectedItem.images[0].src}}"/>
+        <ion-card-content>
+          <ion-card-title>
+            {{selectedItem.name}}
+          </ion-card-title>
+          <p class="shop-item-description" [innerHTML]="selectedItem.description"></p>
+        </ion-card-content>
+        <ion-row no-padding>
+          <ion-col>
+            <button ion-button clear small color="danger" icon-left>
+              <ion-icon name='cart'></ion-icon>
+              Add To Cart
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>

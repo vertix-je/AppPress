@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
   templateUrl: 'terms.html'
 })
 export class TermsPage {
-  url: string = 'http://app.filmstarr.co.uk/wp-json/wp/v2/pages/16';
+  url: string = 'wp-json/wp/v2/pages/16';
   termsItem: any;
 
   constructor(public navCtrl: NavController, private http: Http, private nav: NavController, private dataProvider: DataProvider) {

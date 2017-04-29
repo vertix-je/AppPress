@@ -10,6 +10,7 @@ import { ShopPage } from '../pages/shop/shop';
 import { AccountPage } from '../pages/account/account';
 import { TermsPage } from '../pages/terms/terms';
 import { PostDetail } from '../pages/post-detail/post-detail';
+import { ShopItem } from '../pages/shop-item/shop-item';
 
 import { DataProvider } from '../services/data-provider.service';
 
@@ -24,7 +25,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ShopPage,
     AccountPage,
     TermsPage,
-    PostDetail
+    PostDetail,
+    ShopItem
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ShopPage,
     AccountPage,
     TermsPage,
-    PostDetail
+    PostDetail,
+    ShopItem
   ],
   providers: [
     StatusBar,
