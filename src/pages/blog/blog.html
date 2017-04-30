@@ -8,6 +8,11 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-spinner id="loadingSpinner" #loadingSpinner></ion-spinner>
+
+  <ion-refresher (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
   <ion-list>
     <button ion-item *ngFor="let item of blogItems" (click)="itemTapped($event, item)">
@@ -15,5 +20,4 @@
     <p [innerHTML]="item.excerpt.rendered"></p>
     </button>
   </ion-list>
-
 </ion-content>

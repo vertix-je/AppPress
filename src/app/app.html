@@ -17,10 +17,7 @@
 
   <ion-footer>
 
-    <ion-item>
-      <ion-input item-content type="email" placeholder="Join Our Newsletter"></ion-input>
-      <button item-right ion-button round>Join</button>
-    </ion-item>
+    <button ion-button full outline id="newsletter-button" (click)="presentProfileModal()">Join Our Newsletter</button>
 
     <button menuClose ion-item (click)="openTerms()">
       Terms & Conditions

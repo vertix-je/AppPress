@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, ModalController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -8,6 +8,7 @@ import { InfoPage } from '../pages/info/info';
 import { ShopPage } from '../pages/shop/shop';
 import { AccountPage } from '../pages/account/account';
 import { TermsPage } from '../pages/terms/terms';
+import { NewsletterPage } from '../pages/newsletter/newsletter';
 
 import { DataProvider } from '../services/data-provider.service';
 
@@ -21,11 +22,10 @@ export class MyApp {
 
   pages: Array<{title: string, component: any, icon: string}>;
   
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private dataProvider: DataProvider) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public modalCtrl: ModalController, private dataProvider: DataProvider) {
     this.initializeApp();
 
     //Fire off some initial requests so that we pre-cache our data
-    this.dataProvider.getData('wp-json/wp/v2/posts');
     this.dataProvider.getData('wp-json/wp/v2/pages/25');
     this.dataProvider.getData('wp-json/wp/v2/pages/16');
     this.dataProvider.getWooData('products');
@@ -59,5 +59,10 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(TermsPage);
+  }
+
+  presentProfileModal() {
+    let profileModal = this.modalCtrl.create(NewsletterPage, { });
+    profileModal.present();
   }
 }

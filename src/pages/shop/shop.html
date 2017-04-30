@@ -13,6 +13,12 @@
 </ion-header>
 
 <ion-content>
+  <ion-spinner id="loadingSpinner" #loadingSpinner></ion-spinner>
+
+  <ion-refresher (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <ion-row wrap>
     <ion-col col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 *ngFor="let item of products">
       <ion-card tappable (click)="itemTapped($event, item)">
@@ -24,7 +30,7 @@
           <p class="shop-item-description" [innerHTML]="item.description"></p>
         </ion-card-content>
         <ion-row no-padding>
-          <ion-col>
+          <ion-col text-center>
             <button ion-button clear small color="danger" icon-left>
               <ion-icon name='cart'></ion-icon>
               Add To Cart

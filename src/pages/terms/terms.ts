@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, Spinner } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { DataProvider } from '../../services/data-provider.service';
 import 'rxjs/add/operator/map';
@@ -9,6 +9,8 @@ import 'rxjs/add/operator/map';
   templateUrl: 'terms.html'
 })
 export class TermsPage {
+  @ViewChild('loadingSpinner') loadingSpinner: Spinner;
+
   url: string = 'wp-json/wp/v2/pages/16';
   termsItem: any;
 
@@ -16,7 +18,7 @@ export class TermsPage {
   }
   
   ionViewDidEnter() {
-    this.dataProvider.getData(this.url)
+    this.dataProvider.getData(this.url, this.loadingSpinner)
       .subscribe(
         data => {
           this.termsItem = data;

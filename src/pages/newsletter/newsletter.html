@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+	  <ion-buttons start="" class="bar-buttons">
+      <button ion-button="" class="disable-hover bar-button" (click)="dismiss()">
+      	<span class="button-inner">Close</span>
+      </button>
+    </ion-buttons>
+    <ion-title>Join Our Newsletter</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-item no-padding>
+    <ion-input item-content type="email" required placeholder="Enter your email address"></ion-input>
+  </ion-item>
+  <button ion-button block (click)="subscribe()">Join</button>
+
+</ion-content>

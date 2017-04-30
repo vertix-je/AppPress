@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { Observable } from 'rxjs/Rx';
+import { Spinner } from 'ionic-angular';
 import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/operator/map';
 
@@ -10,7 +11,7 @@ declare var WooCommerceAPI: any;
 @Injectable()
 export class DataProvider {
   baseUrl = 'http://app.filmstarr.co.uk';
-  data: Array<{url: string, observable: ReplaySubject<{}>}>;
+  data: Array<{url: string, observable: ReplaySubject<{}>, complete: boolean}>;
   wooCommerceApi: any;
 
   constructor(private http: Http) {
@@ -25,19 +26,29 @@ export class DataProvider {
     });
   }
 
-  getData(url: string, forceRefresh?: boolean) {
-    var requestData = this.data.find(myObj => myObj.url == url);
-    var observable;
-    if (!requestData) {
-      observable = new ReplaySubject(1);
-      this.data.push({url: url, observable: observable});
-    } else {
-      observable = requestData.observable;
+  getData(url: string, loadingSpinner?: Spinner, forceRefresh?: boolean) {
+    if (!this.cached(url) && loadingSpinner) {
+      loadingSpinner.setElementStyle("display","block");
     }
 
+    var requestData = this.data.find(myObj => myObj.url == url);
+    if (!requestData) {
+      requestData = {url: url, observable: new ReplaySubject(1), complete: false};
+      this.data.push(requestData);
+    } else if (forceRefresh) {
+      requestData.observable = new ReplaySubject(1);
+    }
+
+    var observable:any = requestData.observable;
     if (!observable.observers.length || forceRefresh) {
       this.http.get(this.baseUrl + '/' + url.replace(/^(\/)/,"")).map(res => res.json()).subscribe(
-          data => observable.next(data),
+          data => {
+            requestData.complete = true;
+            if (loadingSpinner) {
+              loadingSpinner.setElementStyle("display","none");
+            }
+            observable.next(data);
+          },
           error => {
               observable.error(error);
               observable = new ReplaySubject(1);
@@ -47,19 +58,29 @@ export class DataProvider {
     return observable;
   }
 
-  getWooData(url: string, forceRefresh?: boolean) {
-    var requestData = this.data.find(myObj => myObj.url == url);
-    var observable;
-    if (!requestData) {
-      observable = new ReplaySubject(1);
-      this.data.push({url: url, observable: observable});
-    } else {
-      observable = requestData.observable;
+  getWooData(url: string, loadingSpinner?: Spinner, forceRefresh?: boolean) {
+    if (!this.cached(url) && loadingSpinner) {
+      loadingSpinner.setElementStyle("display","block");
     }
 
+    var requestData = this.data.find(myObj => myObj.url == url);
+    if (!requestData) {
+      requestData = {url: url, observable: new ReplaySubject(1), complete: false};
+      this.data.push(requestData);
+    } else if (forceRefresh) {
+      requestData.observable = new ReplaySubject(1);
+    }
+
+    var observable:any = requestData.observable;
     if (!observable.observers.length || forceRefresh) {
       Observable.fromPromise<any>(this.wooCommerceApi.getAsync(url)).subscribe(
-        data => observable.next(data),
+          data => {
+            requestData.complete = true;
+            if (loadingSpinner) {
+              loadingSpinner.setElementStyle("display","none");
+            }
+            observable.next(data);
+          },
         error => {
             observable.error(error);
             observable = new ReplaySubject(1);
@@ -67,6 +88,14 @@ export class DataProvider {
       );
     }
     return observable;
+  }
+
+  cached(url: string) {
+    var requestData = this.data.find(myObj => myObj.url == url);
+    if (requestData && requestData.complete) {
+      return true;
+    }
+    return false;
   }
 }
 

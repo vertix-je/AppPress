@@ -8,7 +8,9 @@
 </ion-header>
 
 <ion-content padding>
- <div *ngIf="termsItem" class="selection">
+  <ion-spinner id="loadingSpinner" #loadingSpinner></ion-spinner>
+
+	<div *ngIf="termsItem" class="selection">
     <div [innerHTML]="termsItem.content.rendered"></div>
- </div>
+ 	</div>
 </ion-content>
