@@ -17,19 +17,40 @@
       <ion-card class="shop-item">
         <img src="{{selectedItem.images[0].src}}"/>
         <ion-card-content>
+
+          <ion-row class="item-picker">
+            <ion-col no-padding col-2>
+              <div tappable onclick="document.getElementById('item-count').innerHTML=Math.max(parseFloat(document.getElementById('item-count').innerHTML)-1,1);">
+                -
+              </div>
+            </ion-col>
+            <ion-col no-padding col-1>
+              <div id="item-count">
+                1
+              </div>
+            </ion-col>
+            <ion-col no-padding col-2>
+              <div tappable onclick="document.getElementById('item-count').innerHTML=parseFloat(document.getElementById('item-count').innerHTML)+1;">
+                +
+              </div>
+            </ion-col>
+            <ion-col no-padding col-2>
+              |
+            </ion-col>
+            <ion-col no-padding col-5>
+              <button clear small icon-right (click)="addItemToCart($event, selectedItem)">
+                ADD TO CART
+                <ion-icon name='cart'></ion-icon>
+              </button>
+            </ion-col>        
+          </ion-row>
+
+          <div padding-top class="price" align="right" [innerHTML]="selectedItem.price_html"></div>
           <ion-card-title>
             {{selectedItem.name}}
           </ion-card-title>
           <p class="shop-item-description" [innerHTML]="selectedItem.description"></p>
         </ion-card-content>
-        <ion-row no-padding>
-          <ion-col text-center>
-            <button ion-button clear small color="danger" icon-left>
-              <ion-icon name='cart'></ion-icon>
-              Add To Cart
-            </button>
-          </ion-col>
-        </ion-row>
       </ion-card>
     </ion-col>
   </ion-row>

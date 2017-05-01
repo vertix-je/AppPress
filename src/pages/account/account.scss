@@ -1,3 +1,19 @@
 page-account {
+	.name-input {
+		border-bottom: 0 !important;
+	}
 
+  .no-margin {
+  	input {
+			margin: 0 !important;
+		}
+	}
+
+	.top-padding {
+		padding-top: 16px;
+	}
+
+	.top-margin {
+		margin-top: 16px;
+	}
 }

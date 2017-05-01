@@ -14,6 +14,10 @@ page-shop {
 		    overflow-x: scroll;
 			}
 
+			.price {
+				color: color($colors, danger);
+			}
+
 			ion-card-content {
 				padding-bottom: 0 !important;
 

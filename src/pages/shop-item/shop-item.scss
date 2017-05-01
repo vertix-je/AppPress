@@ -1,5 +1,26 @@
 .shop-item {
 	ion-card-content {
-		padding-bottom: 0 !important;
+		.item-picker {
+			text-align: center;
+			background-color: color($colors, danger);
+			border-radius: 5px;
+			color: white;
+			padding: 8px;
+			font-size: 14px;
+
+			button {
+				background-color: transparent;
+				color: white;
+				font-size: 14px;
+				padding: 0;
+
+				ion-icon {
+					font-size: 14px;
+				}
+			}
+		}
+		.price {
+			color: color($colors, danger);
+		}
 	}
 }

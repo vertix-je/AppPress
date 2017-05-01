@@ -27,11 +27,12 @@
           <ion-card-title>
             {{item.name}}
           </ion-card-title>
+          <div class="price" [innerHTML]="item.price_html"></div>
           <p class="shop-item-description" [innerHTML]="item.description"></p>
         </ion-card-content>
         <ion-row no-padding>
           <ion-col text-center>
-            <button ion-button clear small color="danger" icon-left>
+            <button ion-button clear small color="danger" icon-left (click)="addItemToCart($event, item)">
               <ion-icon name='cart'></ion-icon>
               Add To Cart
             </button>

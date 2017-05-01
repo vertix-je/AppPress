@@ -3,7 +3,6 @@
 $font-path: "../assets/fonts";
 
 @import "ionic.globals";
-@import "../pages/shop-item/shop-item.scss";
 
 // Shared Variables
 // --------------------------------------------------
@@ -83,3 +82,8 @@ url('../assets/fonts/fontawesome-webfont.woff2?v=#{$fa-version}') format('woff2'
 url('../assets/fonts/fontawesome-webfont.woff?v=#{$fa-version}') format('woff'),
 url('../assets/fonts/fontawesome-webfont.ttf?v=#{$fa-version}') format('truetype'),
 url('../assets/fonts/fontawesome-webfont.svg?v=#{$fa-version}#fontawesomeregular') format('svg'); font-weight: normal; font-style: normal; }
+
+
+// Add sub pages that aren't loaded otherwise
+// --------------------------------------------------
+@import "../pages/shop-item/shop-item.scss";

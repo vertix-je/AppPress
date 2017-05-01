@@ -16,16 +16,16 @@ export class NewsletterPage {
 	  let alert = this.alertCtrl.create({
 	    title: 'Subscribed',
 	    subTitle: 'Thank you! You are now subscribed to our newsletter.',
-    buttons: [
-      {
-        text: 'Okay',
-        role: 'cancel',
-        handler: () => {
-			  	this.viewCtrl.dismiss();
-        }
-      }
-    ]
-	  });
+	    buttons: [
+	      {
+	        text: 'Okay',
+	        role: 'cancel',
+	        handler: () => {
+				  	this.viewCtrl.dismiss();
+	        }
+	      }
+	    ]
+		  });
 	  alert.present();
 	}
 

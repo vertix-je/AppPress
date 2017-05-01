@@ -8,7 +8,53 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-segment [(ngModel)]="signUpIn" color="primary">
+    <ion-segment-button value="signUp">
+      SIGN UP
+    </ion-segment-button>
+    <ion-segment-button value="signIn">
+      SIGN IN
+    </ion-segment-button>
+  </ion-segment>
 
-  <p>Account page placeholder</p>
+  <div [ngSwitch]="signUpIn" >
+    <ion-list *ngSwitchCase="'signUp'" ngSelected="selected">
+			<ion-label color="primary" stacked>Name</ion-label>
+    	<ion-row>
+    		<ion-col no-padding>
+    			<ion-item class="name-input" no-padding>
+	    			<ion-input class="no-margin" item-content type="text" placeholder="First"></ion-input>
+    			</ion-item>
+    		</ion-col>
+    		<ion-col no-padding>
+    			<ion-item class="name-input" no-padding>
+	    			<ion-input class="no-margin" item-content type="text" placeholder="Last"></ion-input>
+    			</ion-item>
+    		</ion-col>
+    	</ion-row>
+		  <ion-item no-padding>
+		    <ion-label color="primary" stacked>Email address</ion-label>
+		    <ion-input item-content type="email"></ion-input>
+		  </ion-item>
+		  <ion-item no-padding>
+		    <ion-label color="primary" stacked>Create a password</ion-label>
+		    <ion-input type="password"></ion-input>
+		  </ion-item>
+		  <ion-item no-padding>
+		    <ion-label color="primary" stacked>Confirm your password</ion-label>
+		    <ion-input type="password"></ion-input>
+		  </ion-item>
+		  <button class="top-margin" ion-button block>Sign up</button>
+   	</ion-list>
+		<ion-list class="top-margin" *ngSwitchCase="'signIn'">
+		  <ion-item no-padding>
+		    <ion-input class="no-margin" item-content type="email" required placeholder="Email address"></ion-input>
+		  </ion-item>
+		  <ion-item no-padding>
+		    <ion-input class="no-margin" item-content type="password" required placeholder="Password"></ion-input>
+		  </ion-item>
+		  <button class="top-margin" ion-button block>Sign in</button>
+   </ion-list>
+	</div>
 
 </ion-content>

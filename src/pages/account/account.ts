@@ -8,6 +8,8 @@ import 'rxjs/add/operator/map';
   templateUrl: 'account.html'
 })
 export class AccountPage {
+	signUpIn: string = "signUp";
+
   constructor(public navCtrl: NavController, private http: Http, private nav: NavController) {
   }
 	
